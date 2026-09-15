@@ -1,2 +1,2 @@
 # Min första inlämningsuppgift
-Detta är git repot till att dokumentera den första inlämningsuppgiften *Labbmiljö, Git, CLI och AI*
+Detta git-repo är till för att dokumentera den första inlämningsuppgiften "*Labbmiljö, Git, CLI och AI*"
