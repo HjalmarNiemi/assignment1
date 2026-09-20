@@ -38,7 +38,13 @@ Nu kan vi se att gruppen *konsulter* är ägare och rättigheterna ändrats:
 
 ![rättigheter](images/rättigheterlinux.png)
 
+Linux maskinen kan nå Windows maskinen genom ping:
+
 ![pingawindows](images/ping-test1.png)
+
+Nätverkskortets detaljer:
+
+![nätverkskort](images/nätverkskort-linux.png)
 
 ### Windows
 1. 
