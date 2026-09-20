@@ -19,5 +19,19 @@ Labbmiljön består av följande:
 ### Nätverkstabell  
 | Hostname | Operativsystem | IP-adress | Subnätmask | Standard Gateway |
 | -------- | -------------- | --------- | ---------- | ---------------- |
-| Ubuntu-Server-Lab | Ubuntu 26.04.1 LTS | 192.168.1.50 | 255.255.255.0 | 192.168.1.1 |
-| Windows11-Lab | Windows 11 Home 25H2 | 192.168.1.51 | 255.255.255.0 | 192.168.1.2 |
+| Ubuntu-Server-Lab | Ubuntu 26.04.1 LTS | 192.168.1.50 | 255.255.255.0 | Ej tillämpbart |
+| Windows11-Lab | Windows 11 Home 25H2 | 192.168.1.51 | 255.255.255.0 | Ej tillämpbart |
+
+### Kommandoradsarbete & Felsökning
+#### Linux
+1. Skapa mappen /var/systementor/konsultdata och filen anteckningar.txt:
+`sudo mkdir -p /var/systementor/konsultdata && sudo touch /var/systementor/konsultdata/anteckningar.txt`  
+Kontrollera att mappen & textfilen skapades `ls -l /var/systementor/konsultdata` 
+2. Skapa ny grupp `sudo groupadd konsulter`  
+Gör gruppen konsulter till ägare över mappen /var/systementor/konsulter samt alla filer/ undermappar & ändra rättigheter:  
+```
+sudo chown -R :konsulter /var/systementor/konsultdata
+sudo chmod 750 /var/systementor/konsultdata
+sudo chmod 640 /var/systementor/konsultdata/anteckningar.txt
+```
+Nu kan vi se att gruppen är ägare och rättigheterna ändrats: ![skärmbild](Hjalmar%Niemi/Bilder/rättigheter%lab.png)
