@@ -59,12 +59,15 @@ Ta fram behörighetsstrukturen:
 
 ![behörighet](images/rättigheter%20win1.png)  
 
-När vi endast använder `Get-Acl` kunde vi inte se allt under "Access". Om vi istället pipar vidare efter sökvägen med "|" & använder `Format-List` som skriver ut datan som en lodrät lista istället för en tabell samt `AccessToString` som skriver ut hela listan tydligare med radbrytningar:  
+När vi endast använder `Get-Acl` kunde inte allt ses under "Access" då tabellen är för bred. Om vi istället skickar vidare resultatet efter sökvägen med pipe `|` till `Format-List` kan vi skriva ut `Path`, `Owner` och `AccessToString` som en lodrät lista med all information:
 `Get-Acl "C:\Systementor\KonsultData" | Format-List Path, Owner, AccessToString`
 
 ![behörighet-lista](images/rättigheter-win.png)
 
-AccessToString visar nu: 1. Användare 2. Tillåt/Ej Tillåt 3. Rättighet
+Varje rad i AccessToString visar nu en användare eller grupp som har rättigheter och de tre kolumnerna visar:  
+ 1. IdentityReference (Användare/Grupp)
+ 2. AccessControlType (Allow/Deny)
+ 3. FileSystemRights (Rättighet)  
 
 
 Windows-VM:en kan nå Linux-VM:en genom ping:
@@ -79,7 +82,7 @@ Nätverksinställningar:
 
 [Länk till Git-Repo](https://github.com/HjalmarNiemi/assignment1.git)
 
-![git log](images/git%20log%20--oneline.png)
+![git log]()
 
 ## AI-Logg och Utvärdering
 
@@ -100,5 +103,5 @@ Däremot missade den att förklara att endast kommandot `sudo chown -R :` med ut
  / och /praktikanter:  
 `sudo chown -R :praktikanter / /praktikanter/data`
 
-Svaret som gavs av AI-vertyget verifierades genom manualsidan, `man chown` som bekräftar att chown används för att ändra behörighet, -R gör ändringar rekursivt, :grupp ändrar gruppägarskap utan att ändra filägare.  
+Svaret som gavs av AI-vertyget verifierades genom manualsidan, `man chown` som bekräftar att `chown` används för att ändra behörighet, `-R` gör ändringar rekursivt, `:grupp` ändrar gruppägarskap utan att ändra filägare.  
 Kommandot verifierades sedan även genom att det användes för att ändra gruppägare för mappen  `/var/systementor/konsultdata` och dess underkataloger och filer.
