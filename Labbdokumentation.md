@@ -79,7 +79,7 @@ Nätverksinställningar:
 
 [Länk till Git-Repo](https://github.com/HjalmarNiemi/assignment1.git)
 
-screenshot på git commits också!!!********
+![git log](images/git%20log%20--oneline.png)
 
 ## AI-Logg och Utvärdering
 
