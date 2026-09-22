@@ -96,8 +96,9 @@ Du är en senior Linux-systemadministratör. Förklara kommandot `sudo chown -R`
 Det generativa AI-vertygets förklaring av kommandot och dess innehållande delar var helt korrekt utan några hallucinationer (next token prediction).  
 
 Däremot missade den att förklara att endast kommandot `sudo chown -R :` med utelämnad grupp- eller filangivelse skriver ut ett error i terminalen att det saknas argument. Kommandot kräver alltså att användaren anger en giltig grupp- och mapp eller filsökväg.  
-Även en säkerhetsbrist som kan resultera i katastrofala konsekvenser i skarp miljö som AI-vertyget missade att förklara var att användningen av flaggan -R med sudo och chown kan göra att en grupp eller användare kan få behörighet till hela systemet om det skulle användas på root /. Ett exempel på detta skulle kunna vara:  
+Även en säkerhetsbrist som kan resultera i katastrofala konsekvenser i skarp miljö som AI-vertyget missade att förklara var att användningen av flaggan -R med sudo och chown kan göra att en grupp eller användare kan få behörighet till hela systemet om det skulle användas på root /. Ett exempel på detta skulle kunna vara där man råkar ha ett mellanslag mellan  
+ / och /praktikanter:  
 `sudo chown -R :praktikanter / /praktikanter/data`
 
 Svaret som gavs av AI-vertyget verifierades genom manualsidan, `man chown` som bekräftar att chown används för att ändra behörighet, -R gör ändringar rekursivt, :grupp ändrar gruppägarskap utan att ändra filägare.  
-Kommandot verifierades sedan även genom att det användes för att ändra gruppägare för mappen  `/var/systementor` och dess underkataloger och filer.
+Kommandot verifierades sedan även genom att det användes för att ändra gruppägare för mappen  `/var/systementor/konsultdata` och dess underkataloger och filer.
