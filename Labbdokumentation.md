@@ -20,6 +20,8 @@ Labbmiljön består av följande:
 | Ubuntu-Server-Lab | Ubuntu 26.04.1 LTS | 192.168.1.50 | 255.255.255.0 | Ej tillämpbart |
 | Windows11-Lab | Windows 11 Home 25H2 | 192.168.1.51 | 255.255.255.0 | Ej tillämpbart |
 
+Då maskinerna körs på ett internt nätverk och endast ska kommunicera med varandra används inte en standard gateway.
+
 ## Kommandoradsgenomförande
 ### Linux
 Skapa mappen /var/systementor/konsultdata och filen anteckningar.txt:  
