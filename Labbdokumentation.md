@@ -1,16 +1,16 @@
 # Labbdokumentation: Labbmiljö, Git, CLI och AI
 **Namn:** Hjalmar Niemi  
-**Datum:** 15 september 2026,  
-**Kurs:** Introduktion till yrkesrollen och grunderna i IT-infrastruktur
+**Datum:** 15 september 2026  
+**Kurs:** Introduktion till yrkesrollen och grunderna i IT-infrastruktur  
 
 ## Introduktion
 
-Denna rapport dokumenterar uppsättningen och genomförandet av labbmiljön i uppgiften *Labbmiljö, Git, CLI och AI*. Syftet med denna laboration är att praktiskt tillämpa och demonstrera färdigheter inom nätverkskonfiguration, kommandon i Linux och Windows, versionhantering med Git samt kritisk granskning av AI
+Denna rapport dokumenterar uppsättningen och genomförandet av labbmiljön i uppgiften *Labbmiljö, Git, CLI och AI*. Syftet med denna laboration är att praktiskt tillämpa och demonstrera färdigheter inom nätverkskonfiguration, kommandon i Linux och Windows, versionhantering med Git samt kritisk granskning av AI.
 
 ## Labbmiljö
 Labbmiljön består av följande:
 - **Linux-miljö:** Virtuell maskin med Ubuntu som körs via VirtualBox.
-- **Windows-miljö:** Virtuell maskin med Windows11 som körs via VirtualBox.
+- **Windows-miljö:** Virtuell maskin med Windows 11 som körs via VirtualBox.
 - **Git/Github:** Versionshantering.
 - **Visual Studio Code:** Dokumentation i Markdown.
 
@@ -20,7 +20,7 @@ Labbmiljön består av följande:
 | Ubuntu-Server-Lab | Ubuntu 26.04.1 LTS | 192.168.1.50 | 255.255.255.0 | Ej tillämpbart |
 | Windows11-Lab | Windows 11 Home 25H2 | 192.168.1.51 | 255.255.255.0 | Ej tillämpbart |
 
-Då maskinerna körs på ett internt nätverk och endast ska kommunicera med varandra används inte en standard gateway.
+Då maskinerna körs på ett internt nätverk och endast ska kommunicera med varandra behövs inte en standard gateway.
 
 ## Kommandoradsgenomförande
 ### Linux
@@ -38,7 +38,7 @@ Nu kan vi se att gruppen *konsulter* är ägare och behörighet ändrats:
 
 ![rättigheter](images/rättigheterlinux.png)  
 
-`drwxr-x---` berättar att det är ett directory "d" och root har behörigheterna read, write, execute, "rwx". Gruppen "konsulter" har `r-x` behörighet samt "övriga" har inga behörigheter `---`.  `root konsulter` informerar om att root och konsulter är ägare till mappen.  
+`drwxr-x---` berättar att det är ett directory "d" där root har behörigheterna read, write, execute, "rwx". Gruppen "konsulter" har `r-x` behörighet samt "övriga" har inga behörigheter `---`.  `root konsulter` informerar om att root och konsulter är ägare till mappen.  
 Raden under beskriver behörighet till föräldramappen  
 Sista raden beskriver behörighet till filen inuti nuvarande mapp (konsultdata).
 
@@ -55,20 +55,11 @@ Skapa mappen C:\Systementor\KonsultData:
 `md C:\Systementor\KonsultData`  
 
 Ta fram behörighetsstrukturen:  
-`Get-Acl C:\Systementor\KonsultData`
+`(Get-Acl "C:\Systementor\KonsultData").Access`
 
-![behörighet](images/rättigheter%20win1.png)  
+![behörighet](images/Getacl.png)  
 
-När vi endast använder `Get-Acl` kunde inte allt ses under "Access" då tabellen är för bred. Om vi istället skickar vidare resultatet efter sökvägen med pipe `|` till `Format-List` kan vi skriva ut `Path`, `Owner` och `AccessToString` som en lodrät lista med all information:
-`Get-Acl "C:\Systementor\KonsultData" | Format-List Path, Owner, AccessToString`
-
-![behörighet-lista](images/rättigheter-win.png)
-
-Varje rad i AccessToString visar nu en användare eller grupp som har rättigheter och de tre kolumnerna visar:  
- 1. IdentityReference (Användare/Grupp)
- 2. AccessControlType (Allow/Deny)
- 3. FileSystemRights (Rättighet)  
-
+Varje block visar en ACE (Access Control Entry), det vill säga en behörighetsregeln som anger vad en användare eller grupp får göra.
 
 Windows-VM:en kan nå Linux-VM:en genom ping:
 
