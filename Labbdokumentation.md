@@ -1,6 +1,6 @@
 # Labbdokumentation: Labbmiljö, Git, CLI och AI
 **Namn:** Hjalmar Niemi  
-**Datum:** 15 september 2026  
+**Datum:** 2026-09-24 
 **Kurs:** Introduktion till yrkesrollen och grunderna i IT-infrastruktur  
 
 ## Introduktion
